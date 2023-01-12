@@ -1,9 +1,11 @@
 import React from "react";
-import Table from "../Table";
+import InputID from "../inputId/InputID";
+import Table from "../table/Table";
 
 const Home = () => {
   return (
     <>
+      <InputID />
       <Table />
     </>
   );

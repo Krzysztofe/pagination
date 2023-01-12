@@ -12,10 +12,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ApiProvider api={productsApi}>
+    {/* <Provider store={store}> */}
+      {/* <ApiProvider api={productsApi}> */}
         <App />
-      </ApiProvider>
-    </Provider>
+      {/* </ApiProvider> */}
+    {/* </Provider> */}
   </React.StrictMode>
 );
