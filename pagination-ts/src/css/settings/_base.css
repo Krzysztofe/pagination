@@ -1,0 +1,15 @@
+body {
+  font-size: var(--font-size-primary);
+  height: 100vh;
+  background-image: url("../../../asets/pexels-andre-moura-3293037.jpg");
+ background-size: cover;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: clamp(280px, 100%, 1130px);
+  padding: 0 1rem;
+}
+input {
+  cursor: pointer;
+}

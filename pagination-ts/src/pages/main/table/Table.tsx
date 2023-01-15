@@ -45,10 +45,8 @@ const Table: FC<Props> = ({ pageNumber }) => {
     );
   };
 
-console.log("ps", productsPerPage);
-
   return (
-    <div>
+    
       <table>
         <thead>
           <tr>
@@ -74,7 +72,7 @@ console.log("ps", productsPerPage);
             })}
         </tbody>
       </table>
-    </div>
+
   );
 };
 

@@ -1,0 +1,9 @@
+@import "generic/_reset.css";
+@import "settings/_variables.css";
+@import "settings/_typography.css";
+@import "settings/_base.css";
+
+@import "../pages/header/_header.css";
+@import "../pages/inputId/_inputId.css";
+@import "../pages/main/_main.css";
+@import "../pages/main/table/_table.css";

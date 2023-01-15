@@ -1,0 +1,47 @@
+/* TABLE */
+
+.tableContainter {
+
+  width: 100%;
+  margin-bottom: 2rem;
+}
+table {
+  border-collapse: collapse;
+  margin: 3rem 0 3rem 0;
+  width: 80%;
+   font-size: clamp(8px, 2.5vw, 30px);
+}
+
+thead {
+  background-color: var(--color-white);
+}
+
+tr {
+  height: fit-content;
+}
+td,
+th {
+  padding: 0.5rem;
+}
+td {
+  cursor: pointer;
+  text-align: center;
+}
+/* PAGINATION */
+
+.paginationButtonsContainer {
+  display: flex;
+  color: var(--color-white);
+  list-style: none;
+  cursor: pointer;
+  font-size: clamp(8px, 2.5vw, 30px);
+}
+
+.paginationButton__previousNext {
+  margin: 1rem;
+}
+
+.paginationButton__active {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}

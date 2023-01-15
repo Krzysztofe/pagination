@@ -19,7 +19,7 @@ const Main = () => {
   const productsPerPage = 5;
   const pageCount = products && Math.ceil(products.length / productsPerPage);
 
-  const changePage = ({ selected }: any):void => {
+  const changePage = ({ selected }: any): void => {
     setPageNumber(selected);
   };
 
@@ -48,19 +48,21 @@ const Main = () => {
   if (isSuccess) {
     content = (
       <main>
-        <Table pageNumber={pageNumber} />
+        <div className="wrapper wrapper--main">
+          <Table pageNumber={pageNumber} />
 
-        <ReactPaginate
-          previousLabel={"<<"}
-          nextLabel={">>"}
-          pageCount={pageCount || 1}
-          onPageChange={changePage}
-          containerClassName={"paginationButtonsContainer"}
-          previousLinkClassName={"paginationButton__previousNext"}
-          nextLinkClassName={"paginationButton__previousNext"}
-          disabledClassName={"disabledButton"}
-          activeClassName={"paginationButton__active"}
-        />
+          <ReactPaginate
+            previousLabel={"<<"}
+            nextLabel={">>"}
+            pageCount={pageCount || 1}
+            onPageChange={changePage}
+            containerClassName={"paginationButtonsContainer"}
+            previousLinkClassName={"paginationButton__previousNext"}
+            nextLinkClassName={"paginationButton__previousNext"}
+            disabledClassName={"disabledButton"}
+            activeClassName={"paginationButton__active"}
+          />
+        </div>
       </main>
     );
   }

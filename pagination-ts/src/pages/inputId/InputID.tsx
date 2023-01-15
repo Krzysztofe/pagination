@@ -42,7 +42,7 @@ const InputID = () => {
         <label htmlFor="input" className="label">
           Podaj nr id produktu
         </label>
-        <input
+        <input className="input"
           type="text"
           defaultValue={id ? id : inputValueId}
           onKeyDown={inputValidation}
