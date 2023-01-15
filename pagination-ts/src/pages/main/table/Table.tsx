@@ -1,10 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
-import { useActionData } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Product } from "../../../models/dataModels";
 import { useGetAllDataQuery } from "../../../redux/features/apiSlice";
+import TBody from "../table/tBody/TBody"
 
 interface Props {
   pageNumber: number;
@@ -15,15 +13,16 @@ const Table: FC<Props> = ({ pageNumber }) => {
   let products = allData?.data;
 
   const [open, setOpen] = useState(false);
-  const [productsList, setProductsList] = useState(products);
+  const [productsList, setProductsList] = useState<Product[]>([]);
 
   const { id } = useParams();
   if (id) {
     products = products?.filter((product: Product) => product.id === +id);
   }
 
+  console.log(products)
   useEffect(() => {
-    setProductsList(products);
+    products && setProductsList(products);
   }, [id]);
 
   const productsPerPage = 5;
@@ -33,7 +32,7 @@ const Table: FC<Props> = ({ pageNumber }) => {
     ?.slice(pagesVisited, pagesVisited + productsPerPage)
     .some((product: Product) => product.print === true);
 
-  const handleClick = (id: string) => {
+  const handleClick = (id: number): void => {
     setOpen(prevState => !prevState);
     setProductsList(
       productsList?.map((product: Product) => {
@@ -45,6 +44,8 @@ const Table: FC<Props> = ({ pageNumber }) => {
       })
     );
   };
+
+console.log("ps", productsPerPage);
 
   return (
     <div>
@@ -65,27 +66,10 @@ const Table: FC<Props> = ({ pageNumber }) => {
         <tbody>
           {productsList
             ?.slice(pagesVisited, pagesVisited + productsPerPage)
-            .map((product: any) => {
+            .map((product: Product) => {
               return (
-                <tr
-                  onClick={() => handleClick(product.id)}
-                  key={product.id}
-                  style={{ backgroundColor: product.color }}
-                >
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.year}</td>
-                  {product.print === true && (
-                    <>
-                      <td>
-                        <p>{product.color}</p>
-                      </td>
-                      <td>
-                        <p>{product.pantone_value} </p>
-                      </td>
-                    </>
-                  )}
-                </tr>
+                <TBody product={product} 
+                handleClick = {handleClick}/>
               );
             })}
         </tbody>

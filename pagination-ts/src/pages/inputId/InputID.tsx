@@ -25,7 +25,7 @@ const InputID = () => {
     }
   }, [inputValueId, eventData]);
 
-  const handle = (e: any): void=> {
+  const handleNativeEvent = (e: any): void => {
     setEventData(e.nativeEvent.data)
   };
 
@@ -48,7 +48,7 @@ const InputID = () => {
           onKeyDown={inputValidation}
           onChange={e => {
             dispatch(inputValueChange(e.target.value));
-            handle(e);
+            handleNativeEvent(e);
           }}
         />
         <p className="inputError">{inputError}</p>

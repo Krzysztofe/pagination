@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useGetAllDataQuery } from "../../redux/features/apiSlice";
 import Table from "./table/Table";
 import ReactPaginate from "react-paginate";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/store";
-import { useParams } from "react-router-dom";
 
 const Main = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -22,7 +19,7 @@ const Main = () => {
   const productsPerPage = 5;
   const pageCount = products && Math.ceil(products.length / productsPerPage);
 
-  const changePage = ({ selected }: any) => {
+  const changePage = ({ selected }: any):void => {
     setPageNumber(selected);
   };
 
