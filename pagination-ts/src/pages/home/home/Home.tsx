@@ -1,12 +1,12 @@
 import React from "react";
-import InputID from "../inputId/InputID";
-import Table from "../table/Table";
+import InputID from "../../inputId/InputID";
+import Main from "../../main/Main";
 
 const Home = () => {
   return (
     <>
       <InputID />
-      <Table />
+      <Main />
     </>
   );
 };

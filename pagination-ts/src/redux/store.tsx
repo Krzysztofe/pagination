@@ -7,9 +7,6 @@ export const store = configureStore({
   reducer: {
     inputValuex: inputSlice,
     [productsApi.reducerPath]: productsApi.reducer
-
-    // btnCounter: btnCounterSlice,
-    // productsApi.reducerPath: productsApi
   },
 middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware)
 
