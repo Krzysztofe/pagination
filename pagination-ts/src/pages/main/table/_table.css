@@ -1,26 +1,14 @@
 /* TABLE */
 
-.tableContainter {
-
-  width: 100%;
-  margin-bottom: 2rem;
-}
 table {
   border-collapse: collapse;
   margin: 3rem 0 3rem 0;
   width: 80%;
-   font-size: clamp(8px, 2.5vw, 30px);
-}
-
-thead {
+  font-size: clamp(8px, 2.5vw, 30px);
+  outline: 10px solid var(--color-white);
   background-color: var(--color-white);
 }
-
-tr {
-  height: fit-content;
-}
-td,
-th {
+td,th {
   padding: 0.5rem;
 }
 td {
@@ -31,17 +19,17 @@ td {
 
 .paginationButtonsContainer {
   display: flex;
+  justify-content: space-around;
   color: var(--color-white);
   list-style: none;
   cursor: pointer;
   font-size: clamp(8px, 2.5vw, 30px);
 }
 
-.paginationButton__previousNext {
-  margin: 1rem;
+.paginationButton__active {
+  border: 1px solid var(--color-white);
 }
 
-.paginationButton__active {
-  color: var(--color-black);
-  background-color: var(--color-white);
+a {
+  margin: 1em;
 }

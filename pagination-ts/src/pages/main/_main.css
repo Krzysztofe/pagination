@@ -1,6 +1,12 @@
-.wrapper--main{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.main__message {
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper--main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

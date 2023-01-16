@@ -1,5 +1,4 @@
-import React from "react";
-import InputID from "../inputId/InputID";
+import InputID from "./inputId/InputID";
 
 const Header = () => {
   return (

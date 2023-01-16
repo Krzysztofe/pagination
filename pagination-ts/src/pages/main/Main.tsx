@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetAllDataQuery } from "../../redux/features/apiSlice";
 import Table from "./table/Table";
 import ReactPaginate from "react-paginate";
+import { useParams } from "react-router-dom";
+import { Product } from "../../models/fetchDataModels";
+import { SelectedInPagination } from "../../models/selectedInPagination";
+import { productsPerPage } from "../../data/productsPerPage";
 
 const Main = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -15,23 +19,26 @@ const Main = () => {
   } = useGetAllDataQuery();
 
   let products = allData?.data;
+  const { id } = useParams();
+  if (id) {
+    products = products?.filter((product: Product) => product.id === +id);
+  }
 
-  const productsPerPage = 5;
   const pageCount = products && Math.ceil(products.length / productsPerPage);
 
-  const changePage = ({ selected }: any): void => {
+  const changePage = ({ selected }: SelectedInPagination): void => {
     setPageNumber(selected);
   };
 
   let content = (
-    <main>
+    <main className="main__message">
       <h2>No data</h2>
     </main>
   );
 
   if (isLoading || isFetching) {
     content = (
-      <main>
+      <main className="main__message">
         <h2>Loading</h2>
       </main>
     );
@@ -39,7 +46,7 @@ const Main = () => {
 
   if (isError) {
     content = (
-      <main>
+      <main className="main__message">
         <h2>Brak połączenia z serwerem</h2>
       </main>
     );
@@ -49,11 +56,10 @@ const Main = () => {
     content = (
       <main>
         <div className="wrapper wrapper--main">
-          <Table pageNumber={pageNumber} />
-
+          <Table pageNumber={pageNumber} products={products} />
           <ReactPaginate
-            previousLabel={"<<"}
-            nextLabel={">>"}
+            previousLabel={"<< Previous"}
+            nextLabel={"Next >>"}
             pageCount={pageCount || 1}
             onPageChange={changePage}
             containerClassName={"paginationButtonsContainer"}

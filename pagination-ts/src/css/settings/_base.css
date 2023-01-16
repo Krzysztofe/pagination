@@ -1,8 +1,10 @@
+
 body {
   font-size: var(--font-size-primary);
   height: 100vh;
   background-image: url("../../../asets/pexels-andre-moura-3293037.jpg");
  background-size: cover;
+background-color: rgba(255, 255, 255, 0.5);
 }
 
 .wrapper {

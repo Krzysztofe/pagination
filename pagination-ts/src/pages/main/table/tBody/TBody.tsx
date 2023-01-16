@@ -1,35 +1,41 @@
-import React, { FC } from "react";
-import { Product } from "../../../../models/dataModels";
+import { FC } from "react";
+import { Product } from "../../../../models/fetchDataModels";
+import { productsPerPage } from "../../../../data/productsPerPage";
 
 interface Props {
-  id: number;
-  name: string;
-  year: number;
-  color: string;
-  pantone_value: string;
+  productsList: Product[];
+  handleClick: (id: number) => void;
+  pagesVisited: number;
 }
 
-const TBody: FC<any> = ({ product, handleClick }) => {
+const TBody: FC<Props> = ({ productsList, handleClick, pagesVisited }) => {
+  const displayProducts = productsList?.slice(
+    pagesVisited,
+    pagesVisited + productsPerPage
+  );
+
   return (
-    <tr
-      onClick={() => handleClick(product.id)}
-      key={product.id}
-      style={{ backgroundColor: product.color }}
-    >
-      <td>{product.id}</td>
-      <td>{product.name}</td>
-      <td>{product.year}</td>
-      {product.print === true && (
-        <>
-          <td>
-            <p>{product.color}</p>
-          </td>
-          <td>
-            <p>{product.pantone_value} </p>
-          </td>
-        </>
-      )}
-    </tr>
+    <tbody>
+      {displayProducts.map((product: any) => {
+        return (
+          <tr key={product.id} onClick={() => handleClick(product.id)}>
+            <td style={{ backgroundColor: product.color }}>{product.id}</td>
+            <td style={{ backgroundColor: product.color }}>{product.name}</td>
+            <td style={{ backgroundColor: product.color }}>{product.year}</td>
+            {product.print === true && (
+              <>
+                <td style={{ backgroundColor: product.color }}>
+                  {product.color}
+                </td>
+                <td style={{ backgroundColor: product.color }}>
+                  {product.pantone_value}
+                </td>
+              </>
+            )}
+          </tr>
+        );
+      })}
+    </tbody>
   );
 };
 

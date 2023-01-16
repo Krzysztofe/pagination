@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/store";
-import { inputValueChange } from "../../redux/features/slice";
+import { RootState } from "../../../redux/store";
+import { inputValueChange } from "../../../redux/features/inputSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import useInputValidation from "../../hooks/useInputValidation";
+import useInputValidation from "../../../hooks/useInputValidation";
 
 const InputID = () => {
   const [eventData, setEventData] = useState();
@@ -20,21 +20,15 @@ const InputID = () => {
     if (inputValueId) {
       navigate(`/${inputValueId}`);
     }
-    if (eventData === null) {
+    if (eventData === null && !inputValueId) {
       navigate(`/`);
     }
   }, [inputValueId, eventData]);
 
-  const handleNativeEvent = (e: any): void => {
-    setEventData(e.nativeEvent.data)
+  const handleEventData = (e: any): void => {
+    setEventData(e.nativeEvent.data);
+    console.log(e.nativeEvent.data);
   };
-
-
-// function handleClick(event: Event) {
-//   const target = event.target as HTMLButtonElement;
-//   if (target) console.log(target.value);
-// }
-
 
   return (
     <div>
@@ -42,13 +36,14 @@ const InputID = () => {
         <label htmlFor="input" className="label">
           Podaj nr id produktu
         </label>
-        <input className="input"
+        <input
+          className="input"
           type="text"
           defaultValue={id ? id : inputValueId}
           onKeyDown={inputValidation}
           onChange={e => {
             dispatch(inputValueChange(e.target.value));
-            handleNativeEvent(e);
+            handleEventData(e);
           }}
         />
         <p className="inputError">{inputError}</p>

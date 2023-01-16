@@ -4,8 +4,8 @@ interface InputValue {
   value: string;
 }
 
-const initialState = {
-  value: '',
+const initialState: InputValue = {
+  value: "",
 };
 
 export const inputSlice = createSlice({

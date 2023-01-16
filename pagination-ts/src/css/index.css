@@ -4,6 +4,6 @@
 @import "settings/_base.css";
 
 @import "../pages/header/_header.css";
-@import "../pages/inputId/_inputId.css";
+@import "../pages/header/inputId/_inputId.css";
 @import "../pages/main/_main.css";
 @import "../pages/main/table/_table.css";
